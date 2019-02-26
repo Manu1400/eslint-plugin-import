@@ -1,4 +1,6 @@
 export const rules = {
+  // new rule:
+  'reject': require('./rules/reject'),
   'no-unresolved': require('./rules/no-unresolved'),
   'named': require('./rules/named'),
   'default': require('./rules/default'),
