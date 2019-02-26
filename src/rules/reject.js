@@ -54,7 +54,8 @@ module.exports = {
             node,
             message,
             fix: function(fixer) {
-              const range = sourceCode.getTokenBefore(node).range
+              const range = sourceCode.getTokenBefore(node) == null ?
+                null : sourceCode.getTokenBefore(node).range
               const extract = function (str) {
                 var nb = oldPattern.length - ranges.length
 
@@ -65,6 +66,9 @@ module.exports = {
                   return '['+s+ firstLetter+'-'+ str.substr(-nb+1, nb+1)
                 }
                 return '['+firstLetter+'-'+ str.substr(-nb, nb)
+              }
+              if (!range) {
+                return []
               }
 
               //TODO: issue ' '

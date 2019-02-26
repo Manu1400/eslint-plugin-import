@@ -61,5 +61,9 @@ ruleTester.run('reject', rule, {
       code: `const simple = /[a]/;`,
       errors: 0,
     }),
+    test({
+      code: 'return /[abcde]/;',
+      errors: 1,
+    }),
   ],
 })
